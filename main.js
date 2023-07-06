@@ -1,3 +1,9 @@
+
+var newusername=['c',''];
+users.push(newusername);
+
+console.log(users);
+
 function weightConverter(valNum) {
 	document.getElementById("outputKilograms").innerHTML=valNum/2.2046;
   }
@@ -41,10 +47,9 @@ function calculate() {
 
 	form.addEventListener('submit',function(e){
 		e.preventDefault();
-		const username = usernameInput.value;
-
-		const prePayload=new FormData(form);
-		const Payload=new URLSearchParams(prePayload);
+		
+		const Payload=new FormData(form);
+		
 		console.log([...Payload]);
 		fetch('https://httpbin.org/post',{
 			method:"POST",
