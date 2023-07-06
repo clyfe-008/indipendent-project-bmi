@@ -1,9 +1,3 @@
-
-var newusername=['c',''];
-users.push(newusername);
-
-console.log(users);
-
 function weightConverter(valNum) {
 	document.getElementById("outputKilograms").innerHTML=valNum/2.2046;
   }
@@ -61,25 +55,58 @@ function calculate() {
 	})
 	
 }
-// Function to search for data using username
+
+
+var users = [];
+function handleSubmit(event) {
+  event.preventDefault();
+  var usernameInput = document.getElementById("username");
+  var weightInput = document.getElementById("weight");
+  var heightInput = document.getElementById("height");
+  var commentsInput = document.getElementById("comments");
+  var username = usernameInput.value;
+  var weight = weightInput.value;
+  var height = heightInput.value;
+  var comments = commentsInput.value;
+  var userData = {
+    username: username,
+    weight: weight,
+    height: height,
+    comments: comments
+  };
+  users.push(userData);
+  usernameInput.value = "";
+  weightInput.value = "";
+  heightInput.value = "";
+  commentsInput.value = "";
+}
+function displayUsers() {
+  var userList = document.getElementById("userList");
+  userList.innerHTML = ""; 
+  users.forEach(function (user) {
+    var listItem = document.createElement("li");
+    listItem.textContent = "Username: " + user.username + ", Weight: " + user.weight + ", Height: " + user.height + ", Comments: " + user.comments;
+    userList.appendChild(listItem);
+  });
+}
 function searchByUsername() {
-	const searchInput = document.getElementById("searchUsername").value;
-  
-	// Clear previous search results
-	const searchResults = document.getElementById("searchResults");
-	searchResults.innerHTML = "";
-  
-	// Iterate through the existing user data
-	users.forEach(function (user) {
-	  if (user[0] === searchInput) {
-		const listItem = document.createElement("li");
-		listItem.textContent = user[0] + ": " + user[1];
-		searchResults.appendChild(listItem);
-	  }
-	});
-  }
-  
-  // Adding event listener to the search button
-  const searchButton = document.getElementById("searchButton");
-  searchButton.addEventListener("click", searchByUsername);
-  
+  var searchInput = document.getElementById("searchUsername").value;
+
+  var searchResults = document.getElementById("searchResults");
+  searchResults.innerHTML = ""; 
+  users.forEach(function (user) {
+    if (user.username === searchInput) {
+      var listItem = document.createElement("li");
+      listItem.textContent = "Username: " + user.username + ", Weight: " + user.weight + ", Height: " + user.height + ", Comments: " + user.comments;
+      searchResults.appendChild(listItem);
+    }
+  });
+}
+var submitButton = document.getElementById("submit");
+submitButton.addEventListener("click", handleSubmit);
+var form = document.getElementById("form-post");
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+});
+var searchButton = document.getElementById("searchButton");
+searchButton.addEventListener("click", searchByUsername);
