@@ -61,3 +61,25 @@ function calculate() {
 	})
 	
 }
+// Function to search for data using username
+function searchByUsername() {
+	const searchInput = document.getElementById("searchUsername").value;
+  
+	// Clear previous search results
+	const searchResults = document.getElementById("searchResults");
+	searchResults.innerHTML = "";
+  
+	// Iterate through the existing user data
+	users.forEach(function (user) {
+	  if (user[0] === searchInput) {
+		const listItem = document.createElement("li");
+		listItem.textContent = user[0] + ": " + user[1];
+		searchResults.appendChild(listItem);
+	  }
+	});
+  }
+  
+  // Adding event listener to the search button
+  const searchButton = document.getElementById("searchButton");
+  searchButton.addEventListener("click", searchByUsername);
+  
