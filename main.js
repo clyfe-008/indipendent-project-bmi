@@ -103,7 +103,7 @@ function searchByUsername() {
   });
 }
 var submitButton = document.getElementById("submit");
-submitButton.addEventListener("click", handleSubmit);
+submitButton.addEventListener("click", handleSubmit);g
 var form = document.getElementById("form-post");
 form.addEventListener("submit", function(event) {
   event.preventDefault();
