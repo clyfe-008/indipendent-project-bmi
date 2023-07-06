@@ -10,8 +10,10 @@
     <div class="container">
     	<div class="panel">
     		<h2 class="text-center">Check your BMI</h2>
+			<div>
     		
-    			<p id="introText" class="text-center">Enter your weight and height below to check your BMI results</p>
+    			<p style="color: chartreuse;" aria-flowto="18" id="introText" class="text-center">Enter your weight and height below to check your BMI results</p>
+		</div>
     			
     			<form id="form-post"method="post"action="/post">
 					<label for="username">Name</label>
@@ -21,7 +23,7 @@
 							<p>Convert Pounds to KGs</p>
 							<input id="inputPounds" type="number" placeholder="Pounds" oninput="weightConverter(this.value)
 							" onchange="weightConverter(this.value)">
-							<p>KG: <span id="outputKilograms"></span></p>S
+							<p>KG: <span id="outputKilograms"></span></p>
 						
 								
 						<div id="weightInput">
